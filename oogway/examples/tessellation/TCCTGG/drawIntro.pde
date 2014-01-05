@@ -7,6 +7,7 @@ void drawIntro() {
   textFont(font, 16);
   text("Shift the arbitrary line AB to DC. "
     + "Connect A to D by means of a C-line AD. "
+    + "by an arbitrary line and glide-reflect AE towards ED. "
     + "Then draw from B towards a point E on the perpendicular bisector NE of BC an arbitrary line BE "
     + "and glide-reflect it into the position EC, making sure that it connects "
     + "(glide-reflection axis HI parallel to BC in the same distance from B as from E.)"
