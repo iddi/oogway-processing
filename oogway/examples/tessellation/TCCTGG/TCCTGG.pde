@@ -9,14 +9,16 @@ boolean annotate = true;
 //sides and angles defining the shape
 float AB = 100;
 float AD = 125;
+float AF = 85;
 float angleBAD = 75;
 float angleABE = 137;
+float angleBAF = 98;
 
 Oogway o;
 PFont font;
 
 //latest vertex coordinates
-float Ax, Ay, Bx, By, Cx, Cy, Dx, Dy, Ex, Ey;
+float Ax, Ay, Bx, By, Cx, Cy, Dx, Dy, Ex, Ey, Fx, Fy;
 
 
 ////for tessellating the groups of the pieces
@@ -28,7 +30,7 @@ void setup() {
   o = new Oogway(this);
   noLoop(); 
   smooth();
-  beginRecord(PDF, "TCTGG" + (annotate?"_Annotated.pdf":".pdf"));
+  beginRecord(PDF, "TCCTGG" + (annotate?"_Annotated.pdf":".pdf"));
   o.setPenColor(0);
   o.setPenSize(2);
   if (annotate)font = createFont("Comic Sans MS", 32);
@@ -94,10 +96,18 @@ void drawPiece(float scale) {
   Cx = o.xcor(); 
   Cy = o.ycor();
 
-  //Connect A to D by means of a C-line AD. 
+  //Connect A as well as D to the arbitrary point F by one C-line each.
 
-  //AD
-  cline(Ax, Ay, Dx, Dy, "AM.svg");
+  //AF
+  o.recall("A");
+  o.left(angleBAF);
+  o.shiftForward(AF*scale);
+  Fx = o.xcor();
+  Fy = o.ycor();
+  cline(Ax, Ay, Fx, Fy, "AM1.svg");
+  
+  //DF
+  cline(Dx, Dy, Fx, Fy, "AM1.svg");  
 
   //Then draw from B towards a point E on the perpendicular bisector NE of BC an arbitrary line BE 
   //and glide-reflect it into the position EC, making sure that it connects "
@@ -132,7 +142,7 @@ void groupPositions(float scale) {
   vHeading = 180 + o.towards(Dx, Dy);
   vDistance = o.distance(Dx, Dy);
 
-  o.setPosition(Dx, Dy);
+  o.setPosition(Fx, Fy);
   o.left(180);
   drawPiece(scale);
   float _Bx = Bx, _By = By;
@@ -145,7 +155,7 @@ void groupPositions(float scale) {
   o.beginReflection(); 
   drawPiece(scale);
 
-  o.setPosition(Dx, Dy);
+  o.setPosition(Fx, Fy);
   o.left(180);
   drawPiece(scale);
   o.endReflection();
