@@ -159,7 +159,7 @@ Parameters
 
 `beginPath(svgfile)` will load a path/curve from the specified SVG file as the trace for every `forward()` and `backward()` until `endPath()`. `beginPath()` without the parameter will load again the latest SVG file been loaded. If there is no previous SVG file been loaded, `beginPath()` has no effect but the oogway will leave a straght line on canvas instead.
 
-Oogway supports SVG files created with Inkscape and Adobe Illustrator. The SVG file should contain simply one path or polylines that are created use multiple vertices. If more than one paths are included in the SVG file, only the first one will be loaded. 
+Oogway supports SVG files created with Inkscape and Adobe Illustrator. The SVG file should contain simply one path or polyline that is created use multiple vertices. If more than one paths are included in the SVG file, only the first one will be loaded. 
 
 The starting vertex and the ending vertex of the path shall differ, or a straight line trace will be left on canvas instead.
 
@@ -181,14 +181,14 @@ All the traces left by the oogway on the canvas between beginReflection() and en
 	pd()
 	down()
 
-Pull the pen down �C drawing when moving.
+Put the pen down for drawing when moving.
 
 ### penUp | pu | up
     penUp()
     pu()
     up()
 
-Pull the pen up �C no drawing when moving.
+Pull the pen up from drawing when moving.
 
 ### penSize
     penSize()
@@ -204,7 +204,7 @@ Set the size of the pen. It changes the thickness of the trace.
 
 ### isDown
     isDown()
-Return `true` if pen is down, `false` if it��s up.
+Return `true` if pen is down, `false` if it is up.
 
 ## Color contol
 ### setPenColor
