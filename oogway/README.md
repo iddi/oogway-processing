@@ -119,7 +119,7 @@ Move the oogway to an absolute position. No trace will be left, no matter whethe
 ### mirrorPosition
     mirrorPosition(x1, y1, x2, y2)
 Parameters:
-* x1, y1, x2, y2 - float, two points that defines a line
+* x1, y1, x2, y2 - float, two point that defines a line
 
 Mirror the oogway's position against the given line, keeping the heading direction unchanged, without leaving a trace,  no matter whether the pen is down or up.
    
