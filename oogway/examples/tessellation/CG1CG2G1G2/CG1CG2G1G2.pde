@@ -47,7 +47,7 @@ void draw() {
   drawPiece(1.5);
 
   if (annotate) drawPoints();
-  // if (annotate) drawAxes();
+  if (annotate) drawAxes();
   if (annotate) drawIntro();
 
   endRecord();
