@@ -35,14 +35,14 @@ void draw() {
 
   o.right(120);
 
-  o.setPosition(650, 400);
-  tesselate(0.7);
-
   o.setPosition(400, 500);
   drawPiece(2);
 
   if (annotate) drawPoints();
   if (annotate) drawIntro();
+  
+  o.setPosition(650, 400);
+  tesselate(0.7);
 
   endRecord();
 }
