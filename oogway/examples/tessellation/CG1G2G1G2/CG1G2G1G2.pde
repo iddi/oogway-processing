@@ -9,12 +9,13 @@ boolean annotate = true;
 //sides and angles defining the shape
 float AB = 100;
 float AD = 125;
+float angleBAD = 75;
 
 Oogway o;
 PFont font;
 
 //latest vertex coordinates
-float Ax, Ay, Bx, By, Cx, Cy, Dx, Dy;
+float Ax, Ay, Bx, By, Cx, Cy, Dx, Dy, Ex, Ey;
 
 
 ////for tessellating the groups of the pieces
@@ -26,7 +27,7 @@ void setup() {
   o = new Oogway(this);
   noLoop(); 
   smooth();
-  beginRecord(PDF, "G1G2G1G2" + (annotate?"_Annotated.pdf":".pdf"));
+  beginRecord(PDF, "CG1G2G1G2" + (annotate?"_Annotated.pdf":".pdf"));
   o.setPenColor(0);
   o.setPenSize(2);
   if (annotate)font = createFont("Comic Sans MS", 32);
@@ -36,8 +37,9 @@ void draw() {
   background(255);
   //if(annotate) showGrid();
 
+  o.left(15);
 
-  o.setPosition(650, 370);
+  o.setPosition(650, 400);
   tesselate(0.5);
 
   o.setPosition(250, 600);
@@ -71,23 +73,22 @@ void tesselate(float scale) {
 void drawPiece(float scale) {
   o.pushState();
 
-  //Let A, B, C and D be the points of a rectangle.
-  //Glide-reflect the arbitrary line AB to CD.
-
   //AB
   o.remember("A");
   Ax = o.xcor(); 
   Ay = o.ycor();
   o.pathForward(AB*scale, "AB.svg"); 
+  o.remember("B");
   Bx = o.xcor(); 
   By = o.ycor();
 
   //DC
   o.recall("A");
-  o.shiftLeft(90, AD*scale);
+  o.shiftLeft(angleBAD, AD*scale);
   Dx = o.xcor(); 
   Dy = o.ycor();
-  o.shiftForward(AB*scale);
+  o.right(2*(90-angleBAD));
+  o.shiftForward(AB*scale); 
   Cx = o.xcor(); 
   Cy = o.ycor();
   o.beginReflection();
@@ -95,19 +96,30 @@ void drawPiece(float scale) {
   o.endReflection();
 
 
-  //Glide-reflect another arbitrary line AD towards CB 
+  //Draw the arbitrary line BC and glide-reflect along the glide-reflection axis H2I2 towards AE 
+  //(H2I2 _|_ H1I1 equidistant from A and C).
 
-  //AD
-  o.setPosition(Ax, Ay);
-  o.setHeading(o.towards(Dx, Dy));
-  o.pathForward(AD*scale, "AD.svg");
+  //BC
+  o.recall("B");
+  float bc = o.towards(Cx, Cy);
+  float BC = o.distance(Cx, Cy);
+  o.setHeading(bc);
+  o.pathForward(BC, "BC.svg");
 
-  //CB
-  o.setPosition(Cx, Cy);
-  o.setHeading(o.towards(Bx, By));
+  //AE
+  o.recall("A");
+  o.setHeading(bc);
+  o.shiftForward(BC);
+  Ex = o.xcor();
+  Ey = o.ycor();
   o.beginReflection();
-  o.pathForward(AD*scale, "AD.svg");
+  o.pathBackward(BC, "BC.svg");
   o.endReflection();  
+  
+  //Complete the figure by a C-line DE.
+  
+  //DE
+  cline(Dx, Dy, Ex, Ey, "DM.svg");
 
   o.popState();
 
@@ -120,34 +132,36 @@ void groupPositions(float scale) {
 
   o.remember("O");
   drawPiece(scale);
+  float _Bx = Bx, _By = By;
 
   o.right(180);
   drawPiece(scale);
-
-  o.recall("O");
-  o.shiftForward(AB*scale);
-  o.shiftRight(90, AD*scale);
-  o.right(180);
-  o.beginReflection();
-  drawPiece(scale);
-  o.endReflection();
-
-  o.recall("O");
-  o.right(180);
-  o.shiftForward(AB*scale);
-  o.shiftRight(90, AD*scale);
-  o.right(180);
-  o.beginReflection();
-  drawPiece(scale);
-  o.endReflection();
-
-  o.recall("O");
-  hHeading = o.heading();
-  hDistance = AB*scale*2;
+  float _Cx = Cx, _Cy = Cy;  
   
-  o.right(90);
-  vHeading = o.heading();
-  vDistance = AD*scale*2;
+  o.recall("O");
+  o.shiftForward(AB*scale);
+  o.shiftRight(180-angleBAD, AD*scale);
+  o.left(2*angleBAD);
+  o.beginReflection();
+  drawPiece(scale);
+  o.endReflection();
+
+  o.recall("O");
+  o.right(180);
+  o.shiftForward(AB*scale);
+  o.shiftRight(180-angleBAD, AD*scale);
+  o.left(2*angleBAD);
+  o.beginReflection();
+  drawPiece(scale);
+  o.endReflection();
+  
+  o.setPosition(Ex, Ey);
+  hHeading = o.towards(_Bx, _By);
+  hDistance = o.distance(_Bx, _By);
+ 
+   o.setPosition(Ax, Ay);
+  vHeading = o.towards(_Cx, _Cy);
+  vDistance = o.distance(_Cx, _Cy); 
 
   o.popState();
 }

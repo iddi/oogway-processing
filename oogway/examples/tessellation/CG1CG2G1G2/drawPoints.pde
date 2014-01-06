@@ -12,8 +12,10 @@ void drawPoints() {
   drawPoint("C", Cx, Cy, 0, -20);
   drawPoint("D", Dx, Dy, 0, -20); 
   drawPoint("E", Ex, Ey, -15, 0);
+  drawPoint("F", Fx, Fy, -15, 0);
   
-  drawPoint("M", (Dx+Ex)/2, (Dy+Ey)/2, -15, 0);
+  drawPoint("M1", (Dx+Fx)/2, (Dy+Fy)/2, -20, 0);
+  drawPoint("M2", (Ax+Ex)/2, (Ay+Ey)/2, -20, 0);
 
   o.popState();
   popStyle();
