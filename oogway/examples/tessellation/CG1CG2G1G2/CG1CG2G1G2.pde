@@ -5,6 +5,7 @@ int XSIZE=int(3.6*297);
 int YSIZE=int(3.6*210);
 
 boolean annotate = true;
+int stepCounter = 0;
 
 //sides and angles defining the shape
 float AB = 100;
@@ -40,15 +41,15 @@ void draw() {
   background(255);
   //if(annotate) showGrid();
 
-  o.setPosition(650, 400);
-  tesselate(0.5);
-
   o.setPosition(250, 600);
   drawPiece(1.5);
 
   if (annotate) drawPoints();
   if (annotate) drawAxes();
   if (annotate) drawIntro();
+  
+  o.setPosition(650, 400);
+  tesselate(0.5);
 
   endRecord();
 }
