@@ -66,27 +66,38 @@ Turn the oogway left by angle (degrees).
 Parameters:
 * absoluteAngle - float, in degrees
 * distance - float
+
 Shift the oogway towards an absoluteAngle, over the specified distance, but keeping the heading direction unchanged, without leaving traces, no matter wheter the pen is up or down.. Use the absolute angle with caution, since the reflection commands will have no effect on the absolute angles.
 
-*** shiftForward
+### shiftForward
     shiftForward(distance)
 Parameters:
 * distance - float
+
 Shift the oogway forward over a specified distance, in the direction the oogway is heading, without leaving traces, no matter wheter the pen is up or down.
 
-*** shiftBackward
+### shiftBackward
     shiftBackward(distance)
 Parameters:
 * distance - float
+
 Shift the oogway backward over a specified distance, opposite to the the direction the oogway is heading, without leaving a trace, no matter whether the pen is up or down. It keeps the oogway's heading direction.
 
 
-*** shiftLeft
+### shiftLeft
     shiftLeft(angle, distance)
+Parameters:
+* angle - float, in degrees
+* distance - float 
+
 Shift the oogway towards a relative angle at the left, over the specified distance, but keeping the heading direction unchanged, without leaving a trace, no matter whether the pen is up or down.. Use the absolute angle with caution, since the reflection commands will have no effect on the absolute angles.
 
-*** shiftRight
+### shiftRight
     shiftRight(angle, distance)
+Parameters
+* angle - float, in degrees
+* distance - float 
+
 Shift the oogway towards a relative angle at the right, over the specified distance, but keeping the heading direction unchanged, without leaving a trace, no matter whether the pen is up or down.. Use the absolute angle with caution, since the reflection commands will have no effect on the absolute angles.
 
 
