@@ -12,6 +12,7 @@ boolean annotate = true;
 boolean tessellating = false;
 ArrayList done = new ArrayList();
 boolean stop = false;
+int counter = 0;
 
 //sides and angles defining the shape
 float AB = 100;
@@ -37,13 +38,15 @@ void setup() {
   o = new Oogway(this);
   noLoop(); 
   smooth();
-  //beginRecord(PDF, "CG1CG2G1G2" + (annotate?"_Annotated.pdf":".pdf"));
   o.setPenColor(0);
   o.setPenSize(2);
   if (annotate)font = createFont("Comic Sans MS", 32);
 }
 
 void draw() {
+
+  counter ++;
+  beginRecord(PDF, "CG1CG2G1G2" + (annotate?"_Annotated_"+nf(counter, 3)+".pdf":".pdf"));
 
   background(255);
   //if(annotate) showGrid();
@@ -53,16 +56,15 @@ void draw() {
   drawPiece(1.5);
   if (annotate) drawIntro();  
 
-  if (stop) return;
-
-  //if (annotate) drawPoints();
-  //if (annotate) drawAxes();
+  if (stop) {
+    endRecord();
+    return;
+  }
 
   o.setPosition(650, 400);
   tesselate(0.5);
-
-  //stop = false; //no more reaction to keypress.
-  //endRecord();
+  
+  endRecord();
 }
 
 void tesselate(float scale) {
