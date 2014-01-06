@@ -34,7 +34,7 @@ You should have received a copy of the GNU Lesser General Public License
 Parameters:	
 * distance - float
 
-Move the oogway forward by the specified distance, in the direction the oogway is headed.
+Move the oogway forward over the specified distance, in the direction the oogway is heading.
 
 ### backward | bk | back
     back(distance)
@@ -61,13 +61,41 @@ Parameters:
 
 Turn the oogway left by angle (degrees).
 
+### shift
+    shift(absoluteAngle, distance)
+Parameters:
+* absoluteAngle - float, in degrees
+* distance - float
+Shift the oogway towards an absoluteAngle, over the specified distance, but keeping the heading direction unchanged, without leaving traces, no matter wheter the pen is up or down.. Use the absolute angle with caution, since the reflection commands will have no effect on the absolute angles.
+
+*** shiftForward
+    shiftForward(distance)
+Parameters:
+* distance - float
+Shift the oogway forward over a specified distance, in the direction the oogway is heading, without leaving traces, no matter wheter the pen is up or down.
+
+*** shiftBackward
+    shiftBackward(distance)
+Parameters:
+* distance - float
+Shift the oogway backward over a specified distance, opposite to the the direction the oogway is heading, without leaving a trace, no matter whether the pen is up or down. It keeps the oogway's heading direction.
+
+
+*** shiftLeft
+    shiftLeft(angle, distance)
+Shift the oogway towards a relative angle at the left, over the specified distance, but keeping the heading direction unchanged, without leaving a trace, no matter whether the pen is up or down.. Use the absolute angle with caution, since the reflection commands will have no effect on the absolute angles.
+
+*** shiftRight
+    shiftRight(angle, distance)
+Shift the oogway towards a relative angle at the right, over the specified distance, but keeping the heading direction unchanged, without leaving a trace, no matter whether the pen is up or down.. Use the absolute angle with caution, since the reflection commands will have no effect on the absolute angles.
+
+
 ### setHeading
     setHeading(to_angle)
 Parameters:
 * to_angle - float, in degrees.
 
 Set the orientation of the turtle to to_angle. 
-
 
 ### setPos | setPosition
     setPos(x, y)
@@ -76,6 +104,15 @@ Parameters:
 * x, y - float. Absolute position to move to.
 
 Move the oogway to an absolute position. No trace will be left, no matter whether the pen is down or up.
+
+### mirrorPosition
+    mirrorPosition(x1, y1, x2, y2)
+Parameters
+   x1, y1, x2, y2 - float, two points that defines a line
+
+Mirror the oogway's position against the given line, keeping the heading direction unchanged, without leaving a trace,  no matter whether the pen is down or up.
+   
+
 
 ### home
     home()
