@@ -64,9 +64,9 @@ void tesselate(float scale) {
     //if(i%2==0) o.shift(180+hHeading, hDistance);
   }
   
-  if(annotate) highlightGroup(scale);
-
   o.popState();
+
+ if(annotate) highlightGroup(scale);
 }
 
 void drawPiece(float scale) {

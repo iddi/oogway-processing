@@ -35,7 +35,7 @@ void setup() {
 
 void draw() {
   background(255);
-  if(annotate) showGrid();
+  //if(annotate) showGrid();
 
   o.left(15);
 
@@ -65,9 +65,9 @@ void tesselate(float scale) {
     o.shift(vHeading, vDistance);
   }
   
-  if(annotate) highlightGroup(scale);
-
   o.popState();
+
+ if(annotate) highlightGroup(scale);
 }
 
 void drawPiece(float scale) {

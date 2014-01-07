@@ -64,10 +64,10 @@ void tesselate(float scale) {
     o.popState();
     o.shift(vHeading, vDistance);
   }
+  
+    o.popState();
 
   if (annotate) highlightGroup(scale);
-
-  o.popState();
 }
 
 void drawPiece(float scale) {
