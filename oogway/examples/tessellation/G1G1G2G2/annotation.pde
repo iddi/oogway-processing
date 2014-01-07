@@ -74,31 +74,36 @@ void drawAxes() {
   fill(255, 0, 55);
   o.setPenColor(0, 0, 255);
   
-  o.setPosition(Bx, By);
-  o.setHeading(o.towards(Dx, Dy));
-  o.dashForward(o.distance(Dx, Dy));
-  o.right(90);
+  float s = AB/2;
+  
+  float H1x = (Cx+Bx)/2, H1y = (Cy+By)/2;
+  float I1x = (Ax+Bx)/2, I1y = (Ay+By)/2;
 
-  float H1I1x = ((Ax+Cx)/2+Bx)/2, H1I1y = ((Ay+Cy)/2+By)/2;
-  o.setPosition(H1I1x, H1I1y);
-  o.dashForward(o.distance(Cx, Cy));
-  text("H1", o.xcor(), o.ycor()+10);
-  o.setPosition(H1I1x, H1I1y);
-  o.dashBackward(o.distance(Ax,Ay));
-  text("I1", o.xcor(), o.ycor()+10);
+  float H2x = (Cx+Dx)/2, H2y = (Cy+Dy)/2;
+  float I2x = (Ax+Dx)/2, I2y = (Ay+Dy)/2;
   
-  float H2I2x = ((Ax+Cx)/2+Dx)/2, H2I2y = ((Ay+Cy)/2+Dy)/2;
-  o.setPosition(H2I2x, H2I2y);
-  o.dashForward(o.distance(Cx, Cy));
-  text("H2", o.xcor(), o.ycor()-15);
-  o.setPosition(H2I2x, H2I2y);
-  o.dashBackward(o.distance(Ax,Ay));
-  text("I2", o.xcor(), o.ycor()-15);  
+  //H1I1
+  o.setPosition(H1x, H1y);
+  o.setHeading(o.towards(I1x, I1y));
+  o.shiftBackward(s);
+  text("H1", o.xcor()-15, o.ycor()-15);
+  o.dashForward(o.distance(I1x, I1y)+s);
+  text("I1", o.xcor(), o.ycor()+15);  
   
+  //H2I2
+  o.setPosition(H2x, H2y);
+  o.setHeading(o.towards(I2x, I2y));
+  o.shiftBackward(s);
+  text("H2", o.xcor()-15, o.ycor()-15);
+  o.dashForward(o.distance(I2x, I2y)+s);
+  text("I2", o.xcor(), o.ycor()+15); 
+  
+  //AC
   o.setPosition(Ax, Ay);
   o.setHeading(o.towards(Cx, Cy));
   o.dashForward(o.distance(Cx, Cy));
-
+  
+  //BD
   o.setPosition(Bx, By);
   o.setHeading(o.towards(Dx, Dy));
   o.dashForward(o.distance(Dx, Dy));

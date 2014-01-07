@@ -6,6 +6,14 @@ int YSIZE=int(3.6*210);
 
 boolean annotate = true;
 
+  /** NOTES
+  *
+  * According to the the ways that glide-reflections are done, if we see the sides are 
+  * staight lines, the is symmetrical along the axis BD. It is easier for oogway
+  * to travel around if we take this into account.
+  * 
+  **/  
+
 //sides and angles defining the shape
 float AB = 100;
 float angleABC = 88;
@@ -72,7 +80,7 @@ void tesselate(float scale) {
 
 void drawPiece(float scale) {
   o.pushState();
-
+  
   //Move the arbitrary line AB by glide-reflection so that it connects to BC.
 
   //AB
