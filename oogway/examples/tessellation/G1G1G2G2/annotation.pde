@@ -64,8 +64,6 @@ void drawPoint(String text, float x, float y, float a, float b) {
   text(text, x+a, y + b);
 }
 
-
-
 void drawAxes() {
   pushStyle();
   o.pushState();
@@ -111,8 +109,6 @@ void drawAxes() {
   o.popState();
   popStyle();
 }
-
-
 
 void highlightGroup(float scale){
   o.pushState();

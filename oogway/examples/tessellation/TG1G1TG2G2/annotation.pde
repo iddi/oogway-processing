@@ -32,7 +32,7 @@ void drawArrow(float scale) {
   else {
     o.setStamp("arrow.svg");
   }
-  
+
   o.stamp(24*scale);
 
   o.popState();
@@ -63,8 +63,6 @@ void drawPoint(String text, float x, float y, float a, float b) {
   text(text, x+a, y + b);
 }
 
-
-
 void drawAxes() {
   pushStyle();
   o.pushState();
@@ -72,52 +70,63 @@ void drawAxes() {
   textAlign(CENTER, CENTER);
   fill(255, 0, 55);
   o.setPenColor(0, 0, 255);
-  
-  float N1x = (Ax+Dx)/2, N1y = (Ay+Dy)/2;
-  o.setPosition(N1x, N1y);
-  text("N1", o.xcor()+15, o.ycor());
-  
-  o.setHeading(o.towards(Ex, Ey));
-  o.dashForward(o.distance(Ex, Ey));
-  
+
+  float s = AD/2;
+
+  float H1x = (Dx+Ex)/2, H1y = (Dy+Ey)/2;
+  float I1x = (Ax+Ex)/2, I1y = (Ay+Ey)/2;
+
+  float H2x = (Cx+Fx)/2, H2y = (Cy+Fy)/2;
+  float I2x = (Bx+Fx)/2, I2y = (By+Fy)/2;
+
+  //H1I1
+  o.setPosition(H1x, H1y);
+  o.setHeading(o.towards(I1x, I1y));
+  o.shiftBackward(s);
+  text("H1", o.xcor()-15, o.ycor()-15);
+  o.dashForward(o.distance(I1x, I1y)+s);
+  text("I1", o.xcor()-15, o.ycor());  
+
+  //H2I2
+  o.setPosition(H2x, H2y);
+  o.setHeading(o.towards(I2x, I2y));
+  o.shiftBackward(s);
+  text("H2", o.xcor()+15, o.ycor()-15);
+  o.dashForward(o.distance(I2x, I2y)+s);
+  text("I2", o.xcor()+15, o.ycor()); 
+
+  //AD
   o.setPosition(Ax, Ay);
   o.setHeading(o.towards(Dx, Dy));
   o.dashForward(o.distance(Dx, Dy));
 
-  float H1I1x = (N1x+Ex)/2, H1I1y = (N1y+Ey)/2;
-  o.setPosition(H1I1x, H1I1y);
-  o.dashForward(o.distance(Dx, Dy));
-  text("H1", o.xcor()-15, o.ycor());
-  o.setPosition(H1I1x, H1I1y);
-  o.dashBackward(o.distance(Ax,Ay));
-  text("I1", o.xcor()-15, o.ycor());
-  
-  float N2x = (Bx+Cx)/2, N2y = (By+Cy)/2;
-  o.setPosition(N2x, N2y);
-  text("N2", o.xcor()-15, o.ycor());
-  
-  o.setHeading(o.towards(Fx, Fy));
-  o.dashForward(o.distance(Fx, Fy));
-  
+  //BD
   o.setPosition(Bx, By);
   o.setHeading(o.towards(Cx, Cy));
   o.dashForward(o.distance(Cx, Cy));
 
-  float H2I2x = (N2x+Fx)/2, H2I2y = (N2y+Fy)/2;
-  o.setPosition(H2I2x, H2I2y);
-  o.dashForward(o.distance(Cx, Cy));
-  text("H2", o.xcor()+15, o.ycor());
-  o.setPosition(H2I2x, H2I2y);
-  o.dashBackward(o.distance(Bx,By));
-  text("I2", o.xcor()+15, o.ycor());
+  float N1x = (Ax+Dx)/2, N1y = (Ay+Dy)/2;
+  float N2x = (Bx+Cx)/2, N2y = (By+Cy)/2;
+
+  //EN1
+  o.setPosition(Ex, Ey);
+  o.setHeading(o.towards(N1x, N1y));
+  o.dashForward(o.distance(N1x, N1y));
+  text("N1", o.xcor()+15, o.ycor());  
+
+  //FN2
+  o.setPosition(Fx, Fy);
+  o.setHeading(o.towards(N2x, N2y));
+  o.dashForward(o.distance(N2x, N2y));
+  text("N2", o.xcor()-15, o.ycor());  
 
   o.popState();
   popStyle();
 }
 
-void highlightGroup(float scale){
+void highlightGroup(float scale) {
   o.pushState();
-  o.setPenColor(0,0,255);
+  o.setPenColor(0, 0, 255);
   groupPositions(scale);
   o.popState();
 }

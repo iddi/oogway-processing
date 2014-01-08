@@ -1,6 +1,7 @@
 2014-01-08
 
 * Updated README.MD with the new commands such as pathForward, pathBackward, dashForward, dashBackward, shift, shiftForward, shiftBackward, shiftLeft, shiftRight etc.
+* added NOTES to TG1G1G2G2 about how it is constructed. Updated the way that H1I1 and H2I2 are drawn.
 
 2014-01-07
 

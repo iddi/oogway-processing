@@ -6,6 +6,14 @@ int YSIZE=int(3.6*210);
 
 boolean annotate = true;
 
+/** NOTES
+*
+* The way TG1G1TG2G2 is constructed suggests that BFC and AED are Isosceles triangles, if we see
+* the sides as staight lines. Oogway will take this into account when defining and constructing 
+* the shape.
+* 
+**/
+
 //sides and angles defining the shape
 float AB = 100;
 float AD = 125;
