@@ -1,3 +1,7 @@
+2014-01-08
+
+* Updated README.MD with the new commands such as pathForward, pathBackward, dashForward, dashBackward, shift, shiftForward, shiftBackward, shiftLeft, shiftRight etc.
+
 2014-01-07
 
 * renamed CG1CG2G1G2_STEP TO CG1CG2G1G2i in tessellation examples.

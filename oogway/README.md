@@ -32,7 +32,7 @@ You should have received a copy of the GNU Lesser General Public License
     forward(distance)
     fd(distance)
 Parameters:	
-* distance - float
+* distance - float, must be positive.
 
 Move the oogway forward over the specified distance, in the direction the oogway is heading.
 
@@ -41,9 +41,11 @@ Move the oogway forward over the specified distance, in the direction the oogway
     bk(distance)
     backward(distance)
 Parameters:	
-* distance - float
+* distance - float, must be positive.
 
 Move the oogway backward by distance, opposite to the direction the oogway is headed. Do not change the oogway's heading.
+
+"backward" is implemented using a combination of "left(180); forward(distance); right(180);".
 
 ### right | rt
 	right(angle)
@@ -65,21 +67,21 @@ Turn the oogway left by angle (degrees).
     shift(absoluteAngle, distance)
 Parameters:
 * absoluteAngle - float, in degrees
-* distance - float
+* distance - float, must be positive
 
 Shift the oogway towards an absoluteAngle, over the specified distance, but keeping the heading direction unchanged, without leaving traces, no matter wheter the pen is up or down.. Use the absolute angle with caution, since the reflection commands will have no effect on the absolute angles.
 
 ### shiftForward
     shiftForward(distance)
 Parameters:
-* distance - float
+* distance - float, must be positive
 
 Shift the oogway forward over a specified distance, in the direction the oogway is heading, without leaving traces, no matter wheter the pen is up or down.
 
 ### shiftBackward
     shiftBackward(distance)
 Parameters:
-* distance - float
+* distance - float, must be positive
 
 Shift the oogway backward over a specified distance, opposite to the the direction the oogway is heading, without leaving a trace, no matter whether the pen is up or down. It keeps the oogway's heading direction.
 
@@ -88,7 +90,7 @@ Shift the oogway backward over a specified distance, opposite to the the directi
     shiftLeft(angle, distance)
 Parameters:
 * angle - float, in degrees
-* distance - float 
+* distance - float, must be positive
 
 Shift the oogway towards a relative angle at the left, over the specified distance, but keeping the heading direction unchanged, without leaving a trace, no matter whether the pen is up or down.. Use the absolute angle with caution, since the reflection commands will have no effect on the absolute angles.
 
@@ -96,7 +98,7 @@ Shift the oogway towards a relative angle at the left, over the specified distan
     shiftRight(angle, distance)
 Parameters
 * angle - float, in degrees
-* distance - float 
+* distance - float, must be positive 
 
 Shift the oogway towards a relative angle at the right, over the specified distance, but keeping the heading direction unchanged, without leaving a trace, no matter whether the pen is up or down.. Use the absolute angle with caution, since the reflection commands will have no effect on the absolute angles.
 
@@ -158,7 +160,8 @@ Return the oogway's x coordinate.
 
 ### heading
     heading()
-Return the oogway's current heading angle, in degrees.
+Return the oogway's current heading angle, in degrees. Notice that this angle might be different from the angle that was accumulated by the "left", "right" and "setHeading" commands. The returned angle is always in (-180, 180].
+
 
 ### towards
     towards(x, y)
@@ -166,14 +169,14 @@ Return the oogway's current heading angle, in degrees.
 Parameters:
 * x, y - float.
 
-Return the angle of the line from the oogway's position to the position specified by (x,y).
+Return the angle of the line from the oogway's position to the position specified by (x,y). Notice that this angle might be different from the angle that was accumulated by the "left", "right" and "setHeading" commands. The returned angle is always in (-180, 180].
 
 ### distance()
     distance(x, y)
 Parameters:
 * x, y - float.
 
-Return the distance from the oogway's position to the position specified by (x, y).
+Return the distance from the oogway's position to the position specified by (x, y). It is always positive.
 
 ## Change oogway's trace
 The following commands shall be always used in pairs. "begin" a trace will change the oogway's trace left on the canvas until "end" the trace. "begin"ing a trace will "end" the trace that has been "begin"ed, if it is not "end"ed. "end"ing a trace will change the trace to normal strait and solid lines.
@@ -187,6 +190,22 @@ Parameters:
 
 The dash "pattern" giving lengths of dashes and gaps in pixels; an array with values {10, 3, 9, 4} will draw a line with a 10-pixel dash, 3-pixel gap, 9-pixel dash, * and 4-pixel gap. if the array has an odd number of entries, the values
 are recycled, so an array of {5, 3, 2} will draw a line with a 5-pixel dash, 3-pixel gap, 2-pixel dash, 5-pixel gap, 3-pixel dash, and 2-pixel gap, then repeat. If no pattern is given, {10, 5} is used by default.
+
+### dashForward
+    dashForward(distance, pattern)
+Parameters:
+* distance - float, , must be positive
+* pattern - float[], dash pattern.
+
+A shortened form of "beginDash(pattern); forward(distance); endDash();" 
+
+### dashBackward
+    dashBackward(distance, pattern)
+Parameters:
+* distance - float, must be positive
+* pattern - float[], dash pattern.
+
+A shortened form of "beginDash(pattern); backward(distance); endDash();" 
 
 ### beginSpline and endSpline
     beginSpline(x, y)
@@ -210,6 +229,22 @@ Parameters
 Oogway supports SVG files created with Inkscape and Adobe Illustrator. The SVG file should contain simply one path or polyline that is created use multiple vertices. If more than one paths are included in the SVG file, only the first one will be loaded. 
 
 The starting vertex and the ending vertex of the path shall differ, or a straight line trace will be left on canvas instead.
+
+### pathForward
+    pathForward(distance, svg)
+Parameters:
+* distance - float, must be positive
+* svgfile - String, file name of the SVG file
+
+A shortened form of "beginPath(svg); forward(distance); endPath();" 
+
+### pathBackward
+    pathBackward(distance, svg)
+Parameters:
+* distance - float, must be positive
+* svgfile - String, file name of the SVG file
+
+A shortened form of "beginPath(svg); backward(distance); endPath();" 
 
 ### Reflection of the trace
     beginReflection()
