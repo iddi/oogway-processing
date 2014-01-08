@@ -6,6 +6,12 @@ int YSIZE=int(3.6*210);
 
 boolean annotate = true;
 
+/**
+ *
+ * ABCD forms a Parallelogram, if BC and AD are seen as straight lines.
+ *
+ **/
+
 //sides and angles defining the shape
 float AB = 100;
 float AD = 125;
@@ -16,7 +22,6 @@ PFont font;
 
 //latest vertex coordinates
 float Ax, Ay, Bx, By, Cx, Cy, Dx, Dy;
-
 
 ////for tessellating the groups of the pieces
 float hDistance, hHeading;

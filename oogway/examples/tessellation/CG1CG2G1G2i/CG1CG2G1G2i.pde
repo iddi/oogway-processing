@@ -151,9 +151,9 @@ void drawPiece(float scale) {
     o.pushState();
     o.setPosition(H1x, H1y);
     o.setHeading(o.towards(I1x, I1y));
-    o.shiftBackward(AB/4);
+    o.shiftBackward(H1I1*scale/4);
     annotateText("H1", o.xcor()+15, o.ycor());
-    o.dashForward(o.distance(I1x, I1y)+AB/4);
+    o.dashForward(o.distance(I1x, I1y)+H1I1*scale/4);
     annotateText("I1", o.xcor()+15, o.ycor());
     o.popState();
   }
@@ -232,9 +232,9 @@ void drawPiece(float scale) {
     o.pushState();
     o.setPosition(H2x, H2y);
     o.setHeading(o.towards(I2x, I2y));
-    o.shiftBackward(AB/4);
+    o.shiftBackward(H2I2*scale/4);
     annotateText("H2", o.xcor()-15, o.ycor()-15);
-    o.dashForward(o.distance(I2x, I2y)+AB/4);
+    o.dashForward(o.distance(I2x, I2y)+H2I2*scale/4);
     annotateText ("I2", o.xcor(), o.ycor()-15);
     o.popState();
   }

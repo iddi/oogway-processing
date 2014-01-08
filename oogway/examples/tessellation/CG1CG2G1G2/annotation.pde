@@ -72,13 +72,13 @@ void drawAxes() {
   fill(255, 0, 55);
   o.setPenColor(0, 0, 255);
   
-  float s = AB/4;
-  
   float H1x = Ax*(1-ratioAH1) + Bx*ratioAH1, H1y = Ay*(1-ratioAH1) + By*ratioAH1;
   float I1x = Cx*(1-ratioAH1) + Dx*ratioAH1, I1y = Cy*(1-ratioAH1) + Dy*ratioAH1;
 
   float H2x = Fx*(1-ratioBI2) + Ex*ratioBI2, H2y = Fy*(1-ratioBI2) + Ey*ratioBI2;  
   float I2x = Bx*(1-ratioBI2) + Cx*ratioBI2, I2y = By*(1-ratioBI2) + Cy*ratioBI2;
+  
+  float s = max(dist(H1x, H1y, I1x, I1y), dist(H2x, H2y, I2x, I2y))/4;
   
   o.setPosition(H1x, H1y);
   o.setHeading(o.towards(I1x, I1y));

@@ -72,7 +72,7 @@ void drawAxes() {
   fill(255, 0, 55);
   o.setPenColor(0, 0, 255);
   
-  float s = AB/2;
+  float s = dist(Ax, Ay, Cx, Cy);
   
   float H1x = (Cx+Bx)/2, H1y = (Cy+By)/2;
   float I1x = (Ax+Bx)/2, I1y = (Ay+By)/2;
@@ -83,17 +83,17 @@ void drawAxes() {
   //H1I1
   o.setPosition(H1x, H1y);
   o.setHeading(o.towards(I1x, I1y));
-  o.shiftBackward(s);
+  o.shiftBackward(s/4);
   text("H1", o.xcor()-15, o.ycor()-15);
-  o.dashForward(o.distance(I1x, I1y)+s);
+  o.dashForward(s);
   text("I1", o.xcor(), o.ycor()+15);  
   
   //H2I2
   o.setPosition(H2x, H2y);
   o.setHeading(o.towards(I2x, I2y));
-  o.shiftBackward(s);
+  o.shiftBackward(s/4);
   text("H2", o.xcor()-15, o.ycor()-15);
-  o.dashForward(o.distance(I2x, I2y)+s);
+  o.dashForward(s);
   text("I2", o.xcor(), o.ycor()+15); 
   
   //AC
