@@ -2,6 +2,7 @@
 
 * updated the oogway library, added distance(oogway), towards(oogway) and angleBetween(oogway).
 * added a function in math.pde to calculate the intersection between two lines.
+* added NOTES to TGTG about how it is constructed.
 
 2014-01-08
 
