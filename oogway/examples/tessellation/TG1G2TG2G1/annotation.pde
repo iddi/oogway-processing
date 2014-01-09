@@ -77,23 +77,40 @@ void drawAxes() {
   o.setHeading(o.towards(Dx, Dy));
   o.dashForward(o.distance(Dx, Dy));
   o.right(90);
-
+  
   float H1I1x = (Fx+Bx)/2, H1I1y = (Fy+By)/2;
   o.setPosition(H1I1x, H1I1y);
-  o.dashForward(o.distance(Ex, Ey));
+  o.shiftForward(100);
+  
+  toIntersection(o.xcor(), o.ycor(), H1I1x, H1I1y, Bx, By, Ex, Ey);
+  float I1x = o.xcor(), I1y = o.ycor();
+  toIntersection(o.xcor(), o.ycor(), H1I1x, H1I1y, Ax, Ay, Fx, Fy);
+  float H1x = o.xcor(), H1y = o.ycor();
+ 
+  float s = dist(H1x, H1y, I1x, I1y);
+  
+  o.setPosition(I1x, I1y);
+  o.shiftForward(s/4);
   text("I1", o.xcor(), o.ycor()+10);
-  o.setPosition(H1I1x, H1I1y);
-  o.dashBackward(o.distance(Fx,Fy));
+  o.dashBackward(s + s/2);
   text("H1", o.xcor(), o.ycor()+10);
   
   float H2I2x = (Dx+Ex)/2, H2I2y = (Dy+Ey)/2;
   o.setPosition(H2I2x, H2I2y);
-  o.dashForward(o.distance(Ex, Ey));
-  text("I2", o.xcor(), o.ycor()-15);
-  o.setPosition(H2I2x, H2I2y);
-  o.dashBackward(o.distance(Fx,Fy));
-  text("H2", o.xcor(), o.ycor()-15);  
-
+  o.shiftForward(100);
+  
+  toIntersection(o.xcor(), o.ycor(), H2I2x, H2I2y, Cx, Cy, Ex, Ey);
+  float I2x = o.xcor(), I2y = o.ycor();
+  toIntersection(o.xcor(), o.ycor(), H2I2x, H2I2y, Dx, Dy, Fx, Fy);
+  float H2x = o.xcor(), H2y = o.ycor();
+ 
+  s = dist(H2x, H2y, I2x, I2y);
+  
+  o.setPosition(I2x, I2y);
+  o.shiftForward(s/4);
+  text("I2", o.xcor(), o.ycor()+10);
+  o.dashBackward(s + s/2);
+  text("H2", o.xcor(), o.ycor()+10);
   o.popState();
   popStyle();
 }

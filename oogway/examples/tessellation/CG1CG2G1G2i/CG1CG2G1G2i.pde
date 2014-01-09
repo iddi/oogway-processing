@@ -344,7 +344,7 @@ void groupPositions(float scale) {
   float _Dx = Dx, _Dy = Dy;
   float _Fx = Fx, _Fy = Fy;
 
-  float angleABC = findAngle(Ax, Ay, Bx, By, Cx, Cy);
+  float angleABC = angleBetween(Ax, Ay, Bx, By, Cx, Cy);
 
   o.setPosition(Ex, Ey);
   o.right(180);
@@ -375,8 +375,8 @@ void groupPositions(float scale) {
     return;
   }
 
-  float angleFEA = findAngle(Fx, Fy, Ex, Ey, Ax, Ay);
-  float angleEAB = findAngle(Ex, Ey, Ax, Ay, Bx, By);
+  float angleFEA = angleBetween(Fx, Fy, Ex, Ey, Ax, Ay);
+  float angleEAB = angleBetween(Ex, Ey, Ax, Ay, Bx, By);
   if (isRight(Ax, Ay, Fx, Fy, Ex, Ey)) {
     println("yes");
     angleFEA = 360 - angleFEA;

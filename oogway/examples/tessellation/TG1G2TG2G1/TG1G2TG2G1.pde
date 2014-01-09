@@ -6,6 +6,14 @@ int YSIZE=int(3.6*210);
 
 boolean annotate = true;
 
+/** NOTES
+ *
+ * Since the glide reflection axis H1I1 is perpendicular to AD, it can be proven that
+ * /_ABE = 180 - (2 * /_BAD - /_BAF)
+ * Oogway will follow this observation to construct the shape.
+ *
+ */
+
 //sides and angles defining the shape
 float AB = 100;
 float AD = 125;
@@ -106,7 +114,7 @@ void drawPiece(float scale) {
   
   //EB
   o.recall("B");
-  o.left(angleBAD-(angleBAF-angleBAD));
+  o.left(2* angleBAD - angleBAF);
   o.shiftForward(AF*scale);
   Ex = o.xcor(); 
   Ey = o.ycor();
