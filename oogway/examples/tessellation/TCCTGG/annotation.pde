@@ -82,6 +82,10 @@ void drawAxes() {
   o.setHeading(o.towards(Ex, Ey));
   o.dashForward(o.distance(Ex, Ey));
   
+  o.setPosition(Ax, Ay);
+  o.setHeading(o.towards(Dx, Dy));
+  o.dashForward(o.distance(Dx, Dy));
+  
   o.setPosition(Bx, By);
   o.setHeading(o.towards(Cx, Cy));
   o.dashForward(o.distance(Cx, Cy));
