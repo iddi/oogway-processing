@@ -1,3 +1,10 @@
+2014-01-10
+
+* spellcheck CG1G2G1G2.
+* checked the glide reflection of TCCTGG. added NOTES to TCCTGG about how it is constructed. added a dash line AD.
+* checked the glide reflection of TCTGG. added NOTES to TCTGG about how it is constructed.
+* checked the glide reflection of CCGG. added NOTES to CGG about how it is constructed.
+
 2014-01-09
 
 * updated the oogway library, added distance(oogway), towards(oogway) and angleBetween(oogway).

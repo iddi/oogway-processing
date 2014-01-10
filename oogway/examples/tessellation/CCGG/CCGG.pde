@@ -6,6 +6,12 @@ int YSIZE=int(3.6*210);
 
 boolean annotate = true;
 
+/** NOTES
+ *
+ * It is obvious that if we see all the lines are straight, ABC is an isosceles triangle.
+ *
+ */
+
 //sides and angles defining the shape
 float AB = 100;
 float AD = 108;
