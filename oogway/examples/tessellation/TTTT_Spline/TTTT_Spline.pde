@@ -1,15 +1,11 @@
 import nl.tue.id.oogway.*;
 import processing.pdf.*;
 
-
-int XSIZE=int(3.6*297);
-int YSIZE=int(3.6*210);
-
 PFont font;
 
 void setup() {
   noLoop(); smooth();
-  size(XSIZE, YSIZE);
+  size(1069, 756); //int(3.6*297), int(3.6*210);
   beginRecord(PDF, "TTTT_Spline.pdf");
   //this was tricky, see JunTestFont or email 20-12-2011
 }
@@ -401,5 +397,3 @@ void drwT(PVector p, int scalefactor) {
     text("T", p.x+5, p.y-12);
   }
 }
-
-
