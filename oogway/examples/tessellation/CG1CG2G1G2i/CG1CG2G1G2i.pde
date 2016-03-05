@@ -1,9 +1,6 @@
 import processing.pdf.*;
 import nl.tue.id.oogway.*;
 
-int XSIZE=int(3.6*297);
-int YSIZE=int(3.6*210);
-  
 String title = "No.28, Basic Type CG1CG2G1G2";
 String summary = "\n\nNumber of arbitrary lines: 4\nNetwork: 333333\n4 Positions.";
 String annotation = "";
@@ -34,7 +31,7 @@ float hDistance, hHeading;
 float vDistance, vHeading;
 
 void setup() {
-  size(XSIZE, YSIZE);
+  size(1069, 756); //int(3.6*297), int(3.6*210);
   o = new Oogway(this);
   noLoop(); 
   smooth();
@@ -410,6 +407,3 @@ void keyPressed() {
   stop=false;
   redraw();
 }
-
-
-

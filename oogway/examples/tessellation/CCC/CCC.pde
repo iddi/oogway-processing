@@ -22,7 +22,7 @@ float hDistance, hHeading;
 float vDistance, vHeading;
 
 void setup() {
-  size(XSIZE, YSIZE);
+  size(1069, 756); //int(3.6*297), int(3.6*210);
   o = new Oogway(this);
   noLoop(); 
   smooth();
@@ -112,6 +112,3 @@ void groupPositions(float scale) {
 
   o.popState();
 }
-
-
-

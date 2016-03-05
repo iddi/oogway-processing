@@ -1,9 +1,6 @@
 import processing.pdf.*;
 import nl.tue.id.oogway.*;
 
-int XSIZE=int(3.6*297);
-int YSIZE=int(3.6*210);
-
 boolean annotate = true;
 
 //sides and angles defining the shape
@@ -22,7 +19,7 @@ float hDistance, hHeading;
 float vDistance, vHeading;
 
 void setup() {
-  size(XSIZE, YSIZE);
+  size(1069, 756); //int(3.6*297), int(3.6*210);
   o = new Oogway(this);
   noLoop(); 
   smooth();
@@ -151,4 +148,3 @@ void groupPositions(float scale) {
 
   o.popState();
 }
-
