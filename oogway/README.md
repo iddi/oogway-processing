@@ -129,7 +129,7 @@ Mirror the oogway's position against the given line, keeping the heading directi
 
 ### home
     home()
-Move oogway to the origin, and set its heading to the right (west);
+Move oogway to the origin (center of the screen), and set its heading to the right (west);
 
 ### stamp
     stamp()
