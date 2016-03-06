@@ -21,6 +21,39 @@ Oogway is distributed in the hope that it will be useful,
 
 You should have received a copy of the GNU Lesser General Public License
  along with Oogway.  If not, see <http://www.gnu.org/licenses/>.
+
+![Spiral example](https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Turtle-Graphics_Polyspiral.svg/480px-Turtle-Graphics_Polyspiral.svg.png)
+
+The following processign code implements the spiral pseudocode from <https://commons.wikimedia.org/wiki/File:Turtle-Graphics_Polyspiral.svg>:
+
+```java
+import nl.tue.id.oogway.*;
+
+Oogway o;
+
+void setup() {
+  size(400, 400);
+  o= new Oogway(this);
+  f(.01, 89.5, .01, 184);
+}
+
+void f(float dist, float angle, float incr, int segs /*(number of segments)*/)
+{
+  //start in the center of a square view-space, facing east
+  //repeat segs times:
+  for (int i=0; i<segs; i++) {
+    //go dist * (60% the view-space width) in the current direction
+    o.forward(dist*.6*(width-100));
+
+    //turn angle degrees clockwise (to your right)
+    o.right(angle);
+
+    //increment dist by incr
+    dist += incr;
+  }
+}
+```
+
  
 ---
 # Oogway Motion
