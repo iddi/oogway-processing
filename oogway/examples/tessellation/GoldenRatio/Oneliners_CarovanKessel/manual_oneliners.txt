@@ -1,0 +1,42 @@
+HOW TO USE THE ONELINERS PROGRAM?
+
+1. IMPORT AN IMAGE  
+Import an image at (see code line 32)
+Start the processing file 
+
+2. CREATE ALL ANCHOR POINTS OF THE BEZIER CURVES
+First we are going to create the first and last anchor points of all bezier curves. Do this by clicking with your mouse. 
+one click = first anchor point of the curve1 
+second click = last anchor point of the curve1 which will automatically be placed at the same y-cor to get a horizontal line. 
+third click = first anchor point of curve2 
+fourth click = last anchor point of curve2 
+etc. 
+
+When you want two curves next to eachother, hold the 'LEFT' key in order to place the second curve on the same y-cor as the first curve.
+
+4. DRAW THE CURVES
+When finished with placing the anchor points of ALL curves. We are going to draw the curves with its belonging line. Do this by pressing the 'd' key. 
+now you can see the curve with all its control points (their are 3 control points for each curve). 
+
+5. SHAPE THE CURVES
+First press 'k' to disable the function of placing anchor points. Now your mouse will function as grabbing tool only. When pressing 'k' again the function of placing anchor points will be enabled again. 
+Then by grabbing a control point with your mouse you can shape the curve. Do this for all curves. 
+
+6. DRAW THE REMAINING STRAIGHT LINES 
+Press 'l' to draw the remaining straight lines which will be above the first curve, and beneath the last curve to fill the surface. 
+by using the '=' key to create more vertical distance between the lines and '-' key to create less distance, the lines can be adjusted.   
+
+When a line is too close to the FIRST curve you can remove lines by pressing 'UP' untill the lines are removed. and 'DOWN' untill it is created again. 
+press 'TAB' in order to adjust the lines that are too close to the LAST curve with the same keys.
+
+7. FINISH YOUR DESIGN 
+by pressing 'c' the control points will dissapear. 
+by pressing 'ENTER' the image will dissapear. 
+
+When satisfied with the design, press 'ESC' in order to export it as a PDF file. 
+
+TIPS: 
+- when creating the anchor points work from top to bottom, and place all anchor points on the same x-as at the same time by using the 'LEFT' key.
+- use the same vertical distance between the curves each time. 
+- be careful with moving control points to close to eachother, two can become one control point when getting to close to eachother.
+
